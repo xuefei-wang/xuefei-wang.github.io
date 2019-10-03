@@ -13,9 +13,11 @@ description:      'My personal web'
 url:              http://xuefe-wang.github.io
 baseurl:          /
 
-# author:
-#   name:           'Mark Otto'
-#   url:            https://twitter.com/mdo
+author:
+  name:           'Xuefei Wang'
+  github:         xuefei-wang
+  twitter:        xuefei_w
+  email:          wang.xuefei.wang@gmail.com
 
 paginate:         5
 

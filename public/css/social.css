@@ -1,0 +1,12 @@
+.social-links {
+    float:right;
+    font-size: 24px;
+    color: $cloudy;
+    list-style-type: none;
+}
+
+.social-links__entry {
+    display: inline-block;
+    margin-left: 10px;
+}
+

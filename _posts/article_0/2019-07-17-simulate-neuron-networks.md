@@ -4,7 +4,7 @@
 >
 > <http://neuralensemble.org/docs/PyNN.html>
 >
-> simulator-independent language (NEURON, TEST, Brain), support modeling at a high-level abtraction
+> simulator-independent language (NEURON, TEST, Brain), support modeling at a high-level abstraction
 
 
 
@@ -332,7 +332,7 @@ TODO
 
 or, to implement your own current source:
 
-TODO: check out this !
+Note: `plt.plot(current.times, current.amplitudes)` to check out the waveform
 
 
 

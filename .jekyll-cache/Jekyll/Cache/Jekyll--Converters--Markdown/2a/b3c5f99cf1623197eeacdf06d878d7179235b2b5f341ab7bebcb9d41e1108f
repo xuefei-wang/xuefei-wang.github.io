@@ -1,0 +1,69 @@
+I"L<h1 id="stdp-modeling">STDP Modeling</h1>
+
+<blockquote>
+  <p>Feldman DE. The spike-timing dependence of plasticity. <em>Neuron</em>. 2012;75(4):556–571. doi:10.1016/j.neuron.2012.08.001</p>
+</blockquote>
+
+<p><strong>Selected examples illustrating each form are shown schematically. A</strong>, Hebbian STDP that is equally balanced between LTP and LTD. 1, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3431193/#R41">Froemke et al., 2002</a>. 2, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3431193/#R36">Fino et al. 2008</a>. <strong>B,</strong> Hebbian STDP that is biased towards LTD. 3, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3431193/#R19">Celikel et al., 2004</a>. 4, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3431193/#R41">Froemke et al., 2002</a>. <strong>C,</strong> Anti-Hebbian STDP that contains both LTP and LTD. 5, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3431193/#R37">Fino and Venance, 2005</a>. 6, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3431193/#R80">Letzkus et al. 2006</a>. <strong>D,</strong> Anti-Hebbian STDP that contains only LTD (anti-Hebbian LTD). 6, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3431193/#R56">Han et al., 2000</a>. 7, <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3431193/#R89">Lu et al., 2007</a>. 8. <a href="https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3431193/#R116">Safo and Regehr, 2008</a>.</p>
+
+<p><img src="C:\Blog\_posts\2019-08-06-STDP-modeling.assets\1565057131146.png" alt="1565057131146" /></p>
+
+<h2 id="hebbian-stdp-balanced">Hebbian STDP (balanced)</h2>
+
+<h2 id="hebbian-stdp-ltd-biased">Hebbian STDP (LTD-biased)</h2>
+
+<h2 id="anti-hebbian-stdp-bidirectional">Anti-Hebbian STDP (bidirectional)</h2>
+
+<h2 id="anti-hebbian-stdp-ltd-only">Anti-Hebbian STDP (LTD only)</h2>
+
+<p>TODO: read 6_, 7, 8</p>
+
+<p>TODO: check out the spike-timing dependent plasticity in striatum paper, figure 4</p>
+
+<p>TODO: spike frequency</p>
+
+<pre><code class="language-python"># tingley's settings
+stdp_model = STDPMechanism(
+                    timing_dependence=SpikePairRule(tau_plus=20.0, tau_minus=20.0,
+                                                        A_plus=-0.001, A_minus=-0.0016),
+                    weight_dependence=AdditiveWeightDependence(w_min=0, w_max=0.015),
+                    weight=RandomDistribution('uniform',(0,lsInputThresh*2)),# 0.005,#RandomDistribution('lognormal',(np.log(lsInputThresh),lsInputThresh*100))
+                    delay=7.0,#RandomDistribution('uniform',(7, 20)),
+                    dendritic_delay_fraction=float(1))
+</code></pre>
+
+<pre><code class="language-python">synaptic_parameters = {
+    'excitatory': {
+        'timing_dependence': {'tau_plus': 20.0, 'tau_minus': 20.0,
+                              'A_plus': 0.01, 'A_minus': 0.012},
+        'weight_dependence': {'w_min': 0, 'w_max': 0.04},
+        'weight': 0.01,
+        'delay': '0.1+0.001*d'},
+    'inhibitory': {'weight': 0.05, 'delay': '0.1+0.001*d'},
+    'input': {'weight': 0.01, 'delay': 0.1},
+}
+#https://github.com/NeuralEnsemble/PyNN/blob/2d5997f03a83ffd7fd15553f96df703efce04ae9/examples/stdp_network.py#L42
+</code></pre>
+
+<p>also check out this example: <a href="https://github.com/NeuralEnsemble/PyNN/blob/2d5997f03a83ffd7fd15553f96df703efce04ae9/examples/simple_STDP.py">https://github.com/NeuralEnsemble/PyNN/blob/2d5997f03a83ffd7fd15553f96df703efce04ae9/examples/simple_STDP.py</a></p>
+
+<h1 id="todo">TODO</h1>
+
+<h2 id="run-and-plot-tingleys-figures">！run and plot tingley’s figures</h2>
+
+<h2 id="numiterations">！numIterations</h2>
+
+<h2 id="runtime">！runtime</h2>
+
+<h2 id="numcells">numcells</h2>
+
+<h2 id="ca1ca3-weights">ca1/ca3 weights</h2>
+
+<h2 id="syntheta-ca13-difference">synTheta ca1/3 difference?</h2>
+
+<h2 id="field-waveform">Field waveform</h2>
+
+<h2 id="offsets-from-ca3-to-ca1-continuous">offsets (from ca3 to ca1 continuous)</h2>
+
+<p>##</p>
+:ET

@@ -1,0 +1,348 @@
+I"p,<h1 id="simulate-neuron-networks">Simulate Neuron Networks</h1>
+
+<blockquote>
+  <p>python package: PyNN</p>
+
+  <p><a href="http://neuralensemble.org/docs/PyNN.html">http://neuralensemble.org/docs/PyNN.html</a></p>
+
+  <p>simulator-independent language (NEURON, TEST, Brain), support modeling at a high-level abstraction</p>
+</blockquote>
+
+<h2 id="installation">Installation</h2>
+
+<p>you have to install neuron before pynn…. this is really weird</p>
+
+<p>and there’s no neuron package for python on windows platform…</p>
+
+<p>update[2019/09/23]: Now they have windows support for Neuron package. Go to their website and download it before installing pyNN.</p>
+
+<h2 id="simulation-control">Simulation Control</h2>
+
+<pre><code class="language-python">setup(timestep=0.1, min_delay=0.1, max_delay=10.0)
+run(100.0) # run for 100 ms
+end() # finish up the simulation
+
+reset() # reset time to zero and run a new simulation with the same network
+</code></pre>
+
+<p><code>run</code> has a parameter called <code>call_back</code>, which is pretty interesting:</p>
+
+<p>TODO: read about call_back functions later</p>
+
+<blockquote>
+  <p>callbacks is an optional list of callables, each of which should accept the current time as an argument, and return the next time it wishes to be called.</p>
+</blockquote>
+
+<h3 id="break-a-run-into-several-steps">Break a run into several steps</h3>
+
+<p>if you wish to show some information or perform some calculation during a run.</p>
+
+<pre><code class="language-python">&gt;&gt;&gt; for i in range(4):
+...    run_until(100.0*i)
+...    print("The time is %g" % (100*i,))
+The time is 0
+The time is 100
+The time is 200
+The time is 300
+</code></pre>
+
+<pre><code class="language-python">&gt;&gt;&gt; def report_time(t):
+...     print("The time is %g" % t)
+...     return t + 100.0
+&gt;&gt;&gt; run_until(300.0, callbacks=[report_time])
+The time is 0
+The time is 100
+The time is 200
+The time is 300
+300.0
+</code></pre>
+
+<h2 id="obejcts">Obejcts</h2>
+
+<h3 id="neurons">Neurons</h3>
+
+<p>There are some provided standard neuron templates.</p>
+
+<blockquote>
+  <p><a href="http://neuralensemble.org/docs/PyNN/standardmodels.html">http://neuralensemble.org/docs/PyNN/standardmodels.html</a></p>
+</blockquote>
+
+<pre><code class="language-python">['IF_cond_alpha', 'IF_curr_exp', 'IF_cond_exp', 'EIF_cond_exp_isfa_ista',
+ 'SpikeSourceArray', 'HH_cond_exp', 'IF_cond_exp_gsfa_grr',
+ 'IF_facets_hardware1', 'SpikeSourcePoisson', 'EIF_cond_alpha_isfa_ista',
+ 'IF_curr_alpha']
+</code></pre>
+
+<p>This website shows part of the models’s response to current injection [http://neuralensemble.org/docs/PyNN/examples/cell_type_demonstration.html].</p>
+
+<p>Two of them are spike sources instead of neuron models: <code>SpikeSourceArray</code>, <code>SpikeSourcePoisson</code>. They should be implemented as spike, but their function is to ‘ensure the connected neuron fires at exact multiples of the firing period’. (see p3 population in http://neuralensemble.org/docs/PyNN/examples/simple_STDP.html for example)</p>
+
+<h3 id="population">Population</h3>
+
+<p>A group of neurons = number + neuron type, with optional params:</p>
+
+<ul>
+  <li>structure</li>
+  <li>initial values</li>
+  <li>label</li>
+</ul>
+
+<blockquote>
+  <p>my notes: like <code>list</code> object in python</p>
+</blockquote>
+
+<h3 id="view">View</h3>
+
+<ul>
+  <li>subset of <strong>population</strong></li>
+  <li>returns a <strong>populationview</strong> object, refers to the same object, not a copy</li>
+  <li>can be used in projection</li>
+  <li>can be combined with other <strong>population</strong> or <strong>populationview</strong> objects to create <strong>assembly</strong></li>
+</ul>
+
+<p>applicable: python slicing and indexing notation</p>
+
+<pre><code class="language-python">id = ctx_cells[47]           # the 48th neuron in a Population
+view = ctx_cells[:80]        # the first eighty neurons
+view = ctx_cells[::2]        # every second neuron
+view = ctx_cells[45, 91, 7]  # a specific set of neurons
+view = ctx_cells.sample(50, rng=NumpyRNG(seed=6538))  # select 50 neurons at random
+
+view.parent					 # reference to the 'populaiton' obeject being viewed
+view.mask				     # indices of the neurons in the view
+</code></pre>
+
+<h3 id="assembly">Assembly</h3>
+
+<p><code>Assembly</code> is an aggregate of <code>Population</code> and <code>PopulationView</code> objects, and as such can represent a heterogeneous collection of neurons, of <strong>multiple cell types</strong>.</p>
+
+<pre><code class="language-python"># two ways of creating assembly
+all_cells = tc_cells + ctx_cells
+all_cells = Assembly(tc_cells, ctx_cells)
+</code></pre>
+
+<p>Each collection can be accessed via their labels:</p>
+
+<pre><code class="language-python">all_cells.get_population("Thalamocortical neurons")
+</code></pre>
+
+<h3 id="initialize-and-inspect-parameter-values">Initialize and inspect parameter values</h3>
+
+<p><code>set()</code></p>
+
+<p><code>get()</code></p>
+
+<p><code>initialize()</code></p>
+
+<p>inspect:</p>
+
+<pre><code class="language-python">ctx_cells.celltype.default_initial_values
+</code></pre>
+
+<h3 id="inject-current-into-neurons">Inject Current into neurons</h3>
+
+<p>different current types:</p>
+
+<p><code>current.inject_into(cells)</code> or <code>cells.inect(current)</code></p>
+
+<h3 id="recording-variables">Recording Variables</h3>
+
+<p>Recording:</p>
+
+<pre><code class="language-python">all_cells.record('spikes')
+ctx_cells.sample(10).record(('v', 'w')) #, sampling_interval=0.2)
+</code></pre>
+
+<p>Retrieve the recorded data / Directly write data to file:</p>
+
+<pre><code class="language-python">data_block = all_cells.get_data()
+</code></pre>
+
+<pre><code class="language-python">from neo.io import NeoHdf5IO
+h5file = NeoHdf5IO("my_data.h5")
+ctx_cells.write_data(h5file)
+h5file.close()
+</code></pre>
+
+<p>check out variables that can be recorded:</p>
+
+<pre><code class="language-python">ctx_cells.celltype.recordable
+</code></pre>
+
+<h3 id="working-with-individual-neurons">Working with Individual Neurons</h3>
+
+<pre><code class="language-python">a_cell = tc_cells[47] # ID object
+a_cell.parent.label 
+tc_cells.id_to_index(a_cell) # ID back to index
+</code></pre>
+
+<h2 id="connections">Connections</h2>
+
+<p>其实神经元之间的连接是projection，然后projection需要synapse和connector</p>
+
+<h3 id="synapses">Synapses</h3>
+
+<ul>
+  <li>
+    <p>fixed, <code>StaticSynapse</code></p>
+  </li>
+  <li>
+    <p>short-term synaptic plasticity, <code>TsodyMarkramSynapse</code></p>
+  </li>
+  <li>
+    <p>STDP, <code>STDPMechanism</code></p>
+
+    <ul>
+      <li>
+        <p><code>timing_dependence</code> component</p>
+
+        <ul>
+          <li><code>SpikePairRule</code>(<em>tau_plus=20.0</em>, <em>tau_minus=20.0</em>, <em>A_plus=0.01</em>, <em>A_minus=0.01</em>)</li>
+        </ul>
+      </li>
+      <li>
+        <p><code>weight_dependence</code> component</p>
+      </li>
+      <li>
+        <p><code>voltage_dependence</code> component</p>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="connector">Connector</h3>
+
+<p>base class: <code>Connector</code>, and implement a <code>connect()</code>, takes  <code>Projection</code> object as its single argument</p>
+
+<ul>
+  <li>all-to-all</li>
+  <li>one-to-one, must have the same size</li>
+  <li>FixedProbabilityConnector</li>
+  <li>IndexBasedProbabilityConnector</li>
+  <li>DistanceDependentProbabilityConnector, require a string ‘d_expression’ to calculate the distance,distance is specified by a <code>Space</code> object</li>
+  <li>FixedNumberPostConnector, randomly choose n</li>
+  <li>FixedNumberPreConnector</li>
+  <li>smallNetwork</li>
+</ul>
+
+<p>Or to specify a list of connections:</p>
+
+<pre><code class="language-python">connections = [
+  (0, 0, 0.0, 0.1),
+  (0, 1, 0.0, 0.1),
+  (0, 2, 0.0, 0.1),
+  (1, 5, 0.0, 0.1)
+]
+connector = FromListConnector(connections, column_names=["weight", "delay"])
+</code></pre>
+
+<pre><code class="language-python">connections = [
+  (0, 0, 0.0, 0.1),
+  (0, 1, 0.0, 0.1),
+  (0, 2, 0.0, 0.1),
+  (1, 5, 0.0, 0.1)
+]
+connector = FromListConnector(connections, column_names=["weight", "delay"])
+</code></pre>
+
+<h3 id="projection">Projection</h3>
+
+<p>a set of connection between two groups of neurons</p>
+
+<p>arguments:</p>
+
+<ul>
+  <li>pre population</li>
+  <li>post population</li>
+  <li><code>connector</code></li>
+  <li><code>synapse_type</code></li>
+</ul>
+
+<p>optional:</p>
+
+<ul>
+  <li><code>receptor_type</code>, name of the post-synaptic mechanism, e.g. <code>excitory</code>, <code>inhibitory</code>, <code>NMDA</code></li>
+  <li>label</li>
+  <li><code>Space</code> to determine the distance</li>
+</ul>
+
+<pre><code class="language-python">excitatory_connections = Projection(pre, post, AllToAllConnector(), StaticSynapse(weight=0.123))
+</code></pre>
+
+<blockquote>
+  <p>My  notes:</p>
+
+  <p><code>projection </code>是真正的connection between cells，<code>connector</code>表示了pre和post连接的方式；<code>synapse_type</code>表征了plasiticity，大小的变化，增强还是削弱，<code>receptor_type</code>表示了方向的变化。</p>
+
+  <p>TODO: check out NMDA receptor</p>
+</blockquote>
+
+<p>To retrieve attributes:</p>
+
+<p>​	<code>Projection.get(param, format='list'/'array')</code></p>
+
+<p>To modify attributes:</p>
+
+<p>​	<code>Projection.set(param1=xxx,param2=xxx,....)</code></p>
+
+<p>That is basically for inter-population connection.</p>
+
+<p>For intra-population, just set both pre-/post- to the same population.</p>
+
+<blockquote>
+  <p>For <code>AllToAllConnection</code>, there is a <code>allow_self_connections</code> flag:</p>
+
+  <p>if the connector is used to connect a Population to itself, this flag determines whether a neuron is allowed to connect to itself, or only to other neurons in the Population.</p>
+</blockquote>
+
+<h2 id="space">Space</h2>
+
+<p>TODO</p>
+
+<h2 id="current">Current</h2>
+
+<p><code>CurrentSource</code> class, see figures in <a href="http://neuralensemble.org/docs/PyNN/injecting_current.html">http://neuralensemble.org/docs/PyNN/injecting_current.html</a></p>
+
+<ul>
+  <li><code>DCSource</code></li>
+  <li><code>ACSource</code></li>
+  <li><code>StepCurrentSource</code>, offset means offset in y-axis (unit nA); phase means offset in x-axis (unit degrees)</li>
+  <li><code>NoisyCurrentSource</code></li>
+</ul>
+
+<p>or, to implement your own current source:</p>
+
+<p>Note: <code>plt.plot(current.times, current.amplitudes)</code> to check out the waveform</p>
+
+<h2 id="record-spikes-and-state-variables">Record spikes and state variables</h2>
+
+<p>The classes <code>Population</code>, <code>PopulationView</code> and <code>Assembly</code> all have a <code>record()</code> method, which takes either a single variable name or a list/tuple of such names</p>
+
+<pre><code class="language-python">population.record(None)   # reset recording for this population
+population.record('v', sampling_interval=1.0) # record at a lower frequency
+
+#save data
+population.write_data() # at the end of the simulation to collect data
+
+# an alternative syntax:
+record(['v', 'spikes'], population, filename="output_data.pkl")
+
+# to retrieve saved data
+get_data()
+</code></pre>
+
+<h2 id="data-handling">Data Handling</h2>
+
+<blockquote>
+  <p><a href="http://neuralensemble.org/docs/PyNN/data_handling.html">http://neuralensemble.org/docs/PyNN/data_handling.html</a></p>
+</blockquote>
+
+<p>Neo package:</p>
+
+<p>Block</p>
+
+<p>Segment</p>
+
+<p>AnalogSignal &amp; SpikeTrain</p>
+
+:ET

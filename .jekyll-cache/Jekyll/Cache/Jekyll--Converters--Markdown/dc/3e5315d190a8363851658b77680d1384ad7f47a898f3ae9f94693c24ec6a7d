@@ -1,0 +1,129 @@
+I"g<h1 id="docker">Docker</h1>
+
+<blockquote>
+  <p><a href="https://docs.docker.com/get-started/">https://docs.docker.com/get-started/</a></p>
+</blockquote>
+
+<p><strong>image</strong>: one snapshot of a container, an executable package, including code, runtime, libraries, environment variables, and configuration files</p>
+
+<p><strong>container</strong>: a runtime instance of an image</p>
+
+<hr />
+
+<p><strong>container</strong>: light, runs like a process in view of the host system</p>
+
+<p><strong>virtual machine</strong>: runs a full-blown guest operating system</p>
+
+<h2 id="cli">CLI</h2>
+
+<p>common command:</p>
+
+<pre><code class="language-bash">## List Docker CLI commands
+docker
+docker container --help
+
+## Display Docker version and info
+docker --version
+docker version
+docker info
+
+## Execute Docker image
+docker run hello-world
+
+## List Docker images
+docker image ls
+
+## List Docker containers (running, all, all in quiet mode)
+docker container ls
+docker container ls --all
+docker container ls -aq
+</code></pre>
+
+<h2 id="dockerfile">Dockerfile</h2>
+
+<p>defines what goes on in the environment in your container</p>
+
+<p>比如指明working directory是谁，对外界的接口是什么，设置环境变量，安装package</p>
+
+<h2 id="build-image">build image</h2>
+
+<pre><code class="language-bash">docker build --tag=hello_world .
+</code></pre>
+
+<h2 id="run-ls-rm-kill">run, ls, rm, kill</h2>
+
+<p>for example, map your machine’s 4000 port to the container’s published port 80 (the port you <code>EXPOSE</code> in the dockerfile):</p>
+
+<pre><code class="language-bash">docker run -p 4000:80 hello_world  # Run "friendlyhello" mapping port 4000 to 80
+docker run -d -p 4000:80 hello_world # in detached mode, means it starts up and run in background, so that you can use the console for other commands
+# if it's a remote repo
+docker run -p 4000:80 username/repo:tag # it will be automatically pulled from the repo
+</code></pre>
+
+<p>then go to the url http://localhost:4000</p>
+
+<pre><code class="language-bash">docker container ls                                # List all running containers
+docker container ls -a             # List all containers, even those not running
+docker container stop &lt;hash&gt;           # Gracefully stop the specified container
+docker container kill &lt;hash&gt;         # Force shutdown of the specified container
+docker container rm &lt;hash&gt;        # Remove specified container from this machine
+docker container rm $(docker container ls -a -q)         # Remove all containers
+docker image ls -a                             # List all images on this machine
+docker image rm &lt;image id&gt;            # Remove specified image from this machine
+docker image rm $(docker image ls -a -q)   # Remove all images from this machine
+docker login             # Log in this CLI session using your Docker credentials
+</code></pre>
+
+<h2 id="tag">Tag</h2>
+
+<pre><code class="language-bash"># docker tag image username/repo:tag
+docker tag hello_world xuefei/first_repo:test
+</code></pre>
+
+<p>tag的image也会出现在ls里面</p>
+
+<h2 id="push">Push</h2>
+
+<pre><code class="language-bash">docker push username/repository:tag
+</code></pre>
+
+<h2 id="pull">Pull</h2>
+
+<pre><code class="language-bash">docker pull xxx
+</code></pre>
+
+<h2 id="container-service-swarm-stack">Container, Service, Swarm, Stack</h2>
+
+<p>好像主要是为了distributed system，一个host不够，或者一个production不够，需要scale up的时候。</p>
+
+<h2 id="workflow">Workflow</h2>
+
+<pre><code class="language-bash">docker pull my_image # pull image
+docker run --net=host -i -t --name my_container my_image # --net=host 进程共享host的网络配置，-t分配pseudo-tty，-i保证可以输入输出; 或者
+docker run -p 8888:8888 -i -t --name my_container my_image # 这时候好像--net默认为bridge，进程有封闭的自己的网络配置，自己的8888（冒号后面）port映射到host的8888（冒号前面）
+
+jupyter notebook --ip=0.0.0.0 #然后打开http://192.168.99.100:8888/tree
+....
+docker commit my_container my_image1  # start不能设定port，所以必须先把container保存为image，再重新创建container
+docker run --net=host -i -t --name my_container1 my_image1 # 再次创建container
+</code></pre>
+
+<h2 id="docker-in-action">Docker in action</h2>
+
+<p>Configure environment variables like this:</p>
+
+<pre><code class="language-shell">export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/mnt/c/Users/jinyuesu/.docker/machine/machines/node1"
+export DOCKER_MACHINE_NAME="node1"
+export COMPOSE_CONVERT_WINDOWS_PATHS="true"
+</code></pre>
+
+<p>what is docker daemon?</p>
+
+<p>a common error: <code>'cannot connect to docker daemon'</code>.</p>
+
+<p>It’s a long-run process, and has a port for docker client to connect to. That is what <code>DOCKER_HOST</code> for.</p>
+
+<p><img src="C:\Users\Fei\Desktop\engine-components-flow.png" alt="engine-components-flow" /></p>
+:ET
