@@ -1,0 +1,10 @@
+I"A<p>Work: data analysis (EEG)</p>
+
+<p>Topic: semantic representation, N400, word vector, NLP model, spatial-temporal clustering</p>
+
+<p><strong>Semantic representation</strong> has been studied mostly independently in several disciplines. Within cognitive neuroscience, semantic relatedness can be reflected by N400 priming effects. Within computer science,  natural language processing (NLP) models learn semantic similarity from a large corpus.</p>
+
+<p>We implemented a two-word semantic priming paradigm with <strong>EEG recordings</strong>, trained three <strong>NLP models</strong>(CBOW, GloVe, CWE) and tested which NLP model was the best predictor for elicited ERP responses at which time point. Participants’ EEG response amplitude in a two-word task quantifies brain representation, while word embedding vector distances quantify machine representation. Correlation is performed between model distances and ERP distances at each time point. The procedure is repeated for each sensor. To capture the sensor-space and time-space results at the same time, I chose <strong>spatial-temporal clustering</strong> and determined the significance with a permutation test.</p>
+
+<p>The clustering method successfully captured the differences between models in two-dimensional space, as well as how brain response correlates with lexical-semantic representations in NLP models. We identified that <strong>CWE</strong> best predicts the <strong>early character morphological</strong> processing periods, and <strong>GloVe</strong> best predicts the <strong>late semantic</strong> processing periods.</p>
+:ET

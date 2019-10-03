@@ -1,3 +1,9 @@
+---
+layout: post
+title: main memory
+---
+
+
 # Main memory
 
 >  <https://www.archive.ece.cmu.edu/~ece740/f11/lib/exe/fetch.php?media=wiki:lectures:onur-740-fall11-lecture25-mainmemory.pdf>

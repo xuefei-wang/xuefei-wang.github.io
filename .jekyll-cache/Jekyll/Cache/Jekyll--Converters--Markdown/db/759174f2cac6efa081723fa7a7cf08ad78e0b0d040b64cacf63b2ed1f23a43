@@ -1,0 +1,74 @@
+I"D<h1 id="microcontroller-protocols">Microcontroller Protocols</h1>
+
+<h2 id="i2c">I2C</h2>
+
+<p><img src="C:\Blog\_posts\2019-06-05-microcontroller-protocols.assets\1559728346717.png" alt="1559728346717" /></p>
+
+<p>two buses, many masters, slaves on it, can transfer data to each other</p>
+
+<p>Slave to Master:</p>
+
+<ul>
+  <li>
+    <p>start bit(1 bit, SDA a little earlier than SCL)</p>
+  </li>
+  <li>
+    <p>control byte(device address, choose among all devices on the buses,7 bit)</p>
+  </li>
+  <li>read/write bit(1=read)</li>
+  <li>acknowledge bit &lt;–</li>
+</ul>
+
+<p><img src="C:\Blog\_posts\2019-06-05-microcontroller-protocols.assets\1559727347711.png" alt="1559727347711" /></p>
+
+<p>Master to Slave:</p>
+
+<ul>
+  <li>pause bit</li>
+  <li></li>
+</ul>
+
+<p>Signals:</p>
+
+<p>​	SCL: Clock –&gt;</p>
+
+<p>​	SDA: Data &lt;–&gt;</p>
+
+<h2 id="spi">SPI</h2>
+
+<p><img src="C:\Blog\_posts\2019-06-05-microcontroller-protocols.assets\1559728363991.png" alt="1559728363991" /></p>
+
+<p>Master —- Slave1,2,3…</p>
+
+<p>Signals:</p>
+
+<p>​	SCK: Serial Clock –&gt;</p>
+
+<p>​	MISO: Master In Slave Out &lt;–</p>
+
+<p>​	MOSI: Master Out Slave In –&gt;</p>
+
+<p>​	Slave Select –&gt;</p>
+
+<p>Mode</p>
+
+<p>​	<img src="C:\Users\Fei\AppData\Roaming\Typora\typora-user-images\1559723933319.png" alt="1559723933319" /></p>
+
+<h2 id="uart">UART</h2>
+
+<p>asynchronized, no clock</p>
+
+<p>peer to peer</p>
+
+<p>two buses, TX, RX, not but difference</p>
+
+<p>receiver and transmitter should have the baudrate</p>
+
+<ul>
+  <li>start bit</li>
+  <li>data bit</li>
+  <li>parity bit</li>
+  <li>stop bit</li>
+</ul>
+
+:ET

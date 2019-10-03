@@ -1,0 +1,151 @@
+I"1<h1 id="spatial-navigation">Spatial Navigation</h1>
+
+<blockquote>
+  <p>tri-synaptic pathway: MEC/LEC-DG-CA3</p>
+</blockquote>
+
+<p>proposed non-canonical pathway from Doug：</p>
+
+<p><img src=".\2018-12-07-hippocampus-neuroscience.assets\1544430170564.png" alt="1544430170564" /></p>
+
+<p><img src=".\2018-12-07-hippocampus-neuroscience.assets\1544430212930.png" alt="1544430212930" /></p>
+
+<h2 id="hippocampus">Hippocampus</h2>
+
+<ul>
+  <li>route modified encoding of environmental position</li>
+</ul>
+
+<p>​	place</p>
+
+<p>​	trajectory/episode</p>
+
+<h2 id="subiculum">Subiculum</h2>
+
+<ul>
+  <li>encoding of environmental position, current axis of travel, analogous components of route spaces</li>
+</ul>
+
+<p>​	place</p>
+
+<p>​	analogy</p>
+
+<p>​	axis 9%</p>
+
+<p>​		track: present</p>
+
+<p>​		free-forging: absent</p>
+
+<p>​		carry environmental space as their frame of reference</p>
+
+<p>​	direction</p>
+
+<p>​	boundary vector cells</p>
+
+<h2 id="retrosplenial-cortex">Retrosplenial Cortex</h2>
+
+<ul>
+  <li>encoding of conjunctions between route position, position of route in environment, current action, route sub-spaces, distance (???????)</li>
+</ul>
+
+<p>​	position in route???</p>
+
+<p>​	position in environment??</p>
+
+<p>​	position in sub-space???</p>
+
+<p>​	target location???</p>
+
+<p>​	distance??</p>
+
+<p>​	head direction???</p>
+
+<h2 id="posterior-parietal-cortex">Posterior Parietal Cortex</h2>
+
+<ul>
+  <li>environment-independent encoding of route position, hierarchical relationship between route sub-components, current action</li>
+</ul>
+
+<p>​	position in route???</p>
+
+<p>​	turning action(left v.s. right)</p>
+
+<p>​	target position??</p>
+
+<p>​	position in sub-space?</p>
+
+<h2 id="medial-precentral">Medial Precentral</h2>
+
+<p>premotor? motor?</p>
+
+<p>​	current action</p>
+
+<p>​	planned action</p>
+
+<h2 id="ca1">CA1</h2>
+
+<p>place cells, direction(external cue &gt; internal cue)</p>
+
+<blockquote>
+  <p>EXPERIENCE BASED (jEFFERY MAGEE, BSTP)</p>
+</blockquote>
+
+<h2 id="ca3">CA3</h2>
+
+<h1 id="memory">Memory</h1>
+
+<h2 id="entorhinal-cortex">Entorhinal Cortex</h2>
+
+<p>grid cells</p>
+
+<p>compressed of information</p>
+
+<h2 id="dentate-gyrus">Dentate Gyrus</h2>
+
+<p>one of the few regions that have neurogenesis(产生新神经元)</p>
+
+<h3 id="three-layers">Three layers</h3>
+
+<ul>
+  <li>molecular</li>
+  <li>granular</li>
+  <li>polymorphic</li>
+</ul>
+
+<h3 id="neurons">Neurons</h3>
+
+<p>Granule cells:</p>
+
+<ul>
+  <li>output: mossy fibers, excitatory connections to CA3 pyramid cells</li>
+  <li>input: perforant pathway from Entorhinal Cortex layer 2
+    <ul>
+      <li>medial: proximal dendritic areas of dentate gyrus</li>
+      <li>lateral: distal</li>
+    </ul>
+  </li>
+</ul>
+
+<p>Mossy cells:</p>
+
+<ul>
+  <li>output:</li>
+</ul>
+
+<h3 id="function">Function</h3>
+
+<p>pattern separation and form new memory(sparse)</p>
+
+<p>可以reverse valence (Bidirectional switch of the valence associated with a hippocampal contextual memory engram)</p>
+
+<h2 id="ca3-1">CA3</h2>
+
+<p>memory retrieval</p>
+
+<h2 id="ca1-1">CA1</h2>
+
+<p>proximal - close to CA3</p>
+
+<p>distal - far from CA3</p>
+
+:ET

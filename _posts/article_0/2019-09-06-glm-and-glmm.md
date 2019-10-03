@@ -1,3 +1,9 @@
+---
+layout: post
+title: GLM & GLMM & etc
+---
+
+
 ## linear model
 
 in the form of: y = ax+b

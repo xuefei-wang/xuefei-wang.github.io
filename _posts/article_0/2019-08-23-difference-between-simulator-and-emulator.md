@@ -1,3 +1,8 @@
+---
+layout: post
+title: simulator & emulator
+---
+
 difference between **Simulator** and **Emulator**
 
 You want to duplicate the behavior of an old HP calculator, there are two options:

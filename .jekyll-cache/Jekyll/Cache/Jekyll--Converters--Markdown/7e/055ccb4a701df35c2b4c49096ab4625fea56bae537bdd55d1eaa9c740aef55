@@ -1,0 +1,6 @@
+I"5<p>Semantic representation has been studied mostly independently in several disciplines. Within cognitive neuroscience, semantic relatedness can be reflected by N400 priming effects. Within computer science,  natural language processing (NLP) models learn semantic similarity from a large corpus.</p>
+
+<p>We implemented a two-word semantic priming paradigm with EEG recordings, trained three NLP models(CBOW, GloVe, CWE) and tested which NLP model was the best predictor for elicited ERP responses at which time point. Participants’ EEG response amplitude in a two-word task quantifies brain representation, while word embedding vector distances quantify machine representation. Correlation is performed between model distances and ERP distances at each time point. The procedure is repeated for each sensor. To capture the sensor-space and time-space results at the same time, I chose spatial-temporal clustering and determined the significance with a permutation test.</p>
+
+<p>The clustering method successfully captured the differences between models in two-dimensional space, as well as how brain response correlates with lexical-semantic representations in NLP models. We identified that CWE best predicts the early character morphological processing periods, and GloVe best predicts the late semantic processing periods.</p>
+:ET

@@ -1,3 +1,8 @@
+---
+layout: post
+title: randomization test
+---
+
 # Randomization Test
 
 used for hypothesis testing

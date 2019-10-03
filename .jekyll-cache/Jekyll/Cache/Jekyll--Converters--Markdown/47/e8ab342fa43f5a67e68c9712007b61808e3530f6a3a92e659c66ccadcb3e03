@@ -1,0 +1,171 @@
+I"g<h1 id="dynamic-time-warping">Dynamic Time Warping</h1>
+
+<blockquote>
+  <p>Abdullah Mueen, Eamonn J. Keogh: Extracting Optimal Performance from Dynamic Time Warping. KDD 2016: 2129-2130</p>
+</blockquote>
+
+<h2 id="advantages">Advantages</h2>
+
+<p>In conjunction with simple techniques, such as z-normalization, DTW can provide several invariances like amplitude, offset and the warping (or local scaling) itself</p>
+
+<blockquote>
+  <p>Silva, D. F., Batista, G. E. A. P. A., &amp; Keogh, E. (2016). On the Effect of Endpoints on Dynamic Time Warping. SIGKDD MiLeTS’16. https://doi.org/10.1145/12345.67890</p>
+</blockquote>
+
+<h2 id="dtw-normalization">DTW normalization</h2>
+
+<p>(for each epoch)</p>
+
+<ul>
+  <li>
+    <p>z-norm* is better for most cases</p>
+  </li>
+  <li>
+    <p>max-norm</p>
+  </li>
+</ul>
+
+<h2 id="variants-of-dtw">Variants of DTW</h2>
+
+<ul>
+  <li>
+    <p>LCSS alignment: with some points allowed to be unmapped</p>
+  </li>
+  <li>
+    <p>assign more weights to diagonal step and discourage the path wandering too far from the diagonal. even create asymmetric step patterns</p>
+  </li>
+</ul>
+
+<h2 id="details">Details</h2>
+
+<h3 id="w">W</h3>
+
+<p>w: the constraint of deviating from diagonal, which can greatly affect the performance</p>
+
+<p>for nearest neighbor classification, a small w is preferred. Typically smaller than 10%.</p>
+
+<blockquote>
+  <p>Ratanamahatana, C. A. and Keogh, E. 2005. Three Myths about Dynamic Time Warping Data Mining. In Proceedings of the SIAM International Conference on Data Mining. SDM’05. SIAM, 506-510.
+[18]</p>
+</blockquote>
+
+<p><img src="C:\Users\Fei\AppData\Roaming\Typora\typora-user-images\1542791374710.png" alt="1542791374710" /></p>
+
+<p><img src="C:\Users\Fei\AppData\Roaming\Typora\typora-user-images\1542791781705.png" alt="1542791781705" /></p>
+
+<p>###different lengths</p>
+
+<ol>
+  <li>just compare them, because DTW can handle the local scaling</li>
+  <li>re-interpolate them to have the same length</li>
+</ol>
+
+<p>–&gt; Empirically makes little or no difference for classification and clustering</p>
+
+<h3 id="endpoint">Endpoint</h3>
+
+<p>is very important!!!</p>
+
+<p><img src="C:\Users\Fei\AppData\Roaming\Typora\typora-user-images\1542794505141.png" alt="1542794505141" /></p>
+
+<p>possible fixes(It’s still an open question):</p>
+
+<ol>
+  <li>
+    <p>subsequence extraction algorithm</p>
+  </li>
+  <li>
+    <p>multiply the first and last r elements of the path by a weight</p>
+  </li>
+  <li>
+    <p>open-ended warping</p>
+
+    <p>Change…
+<code>Boundary conditions: w1 = (1,1) and wK = (m,n), this requires the warping path to
+start and finish in diagonally opposite corner cells of the matrix.</code>
+…to
+<code>Boundary conditions: w1 = (1,B) or (B,1) and wK = (m-C,n) or (m,n-C), with 0 ≤ B ≤ r,
+and 0 ≤ C ≤ r this requires the warping path to start and finish in a cyan cell.</code></p>
+
+    <p><img src="C:\Users\Fei\AppData\Roaming\Typora\typora-user-images\1542794821290.png" alt="1542794821290" />r is the relaxation factor parameter</p>
+  </li>
+</ol>
+
+<blockquote>
+  <p>Silva, D. F., Batista, G. E. A. P. A., &amp; Keogh, E. (2016). On the Effect of Endpoints on Dynamic Time Warping. SIGKDD MiLeTS’16. https://doi.org/10.1145/12345.67890</p>
+</blockquote>
+
+<h2 id="multi-dimensional-dtw">Multi-Dimensional DTW</h2>
+
+<p>Two ways:</p>
+
+<ul>
+  <li>independent: just add them - loosely coupled</li>
+  <li>dependent: create a single matrix (squeeze the dimensions) - tightly coupled</li>
+</ul>
+
+<h2 id="similarity">Similarity</h2>
+
+<blockquote>
+  <p>如何把DTW的dissimilarity转变为similarity？</p>
+
+  <p>https://cs.stackexchange.com/questions/53250/normalized-measure-from-dynamic-time-warping</p>
+</blockquote>
+
+<h2 id="notes-for-eeg">Notes for EEG</h2>
+
+<ul>
+  <li>
+    <p>open end</p>
+
+    <p>​	check the DTW tutorial</p>
+  </li>
+  <li>
+    <p>z-normalize</p>
+  </li>
+  <li>
+    <p>independent &amp; dependent</p>
+    <ul>
+      <li>
+        <p>for independent, see how to choose the best dimension???????????????????</p>
+      </li>
+      <li>
+        <p>for dependent,  there’s no need to normalize/standardize the data</p>
+
+        <p>drop dimensions if the variance of that dimension is below certain threshold</p>
+
+        <blockquote>
+          <p>Multi-Dimensional Dynamic Time Warping for Gesture Recognition</p>
+        </blockquote>
+      </li>
+    </ul>
+  </li>
+</ul>
+
+<p>​	search for the optimal w????????</p>
+
+<ul>
+  <li>
+    <p>noise-robust</p>
+
+    <p>simply using a Gaussian smooth(check scipy )</p>
+
+    <blockquote>
+      <p>https://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.ndimage.filters.gaussian_filter1d.html</p>
+    </blockquote>
+  </li>
+</ul>
+
+<p>singular velocity is not  a good idea</p>
+
+<p>try: paa + dtw</p>
+
+<p>​	maybe we can use this to denoise single trial epochs</p>
+
+<pre><code>&gt; Scale up ...
+</code></pre>
+
+<p>the method is called PDTW</p>
+
+<p>LCSS: longest common subsequence, allow for unmatched outliers</p>
+:ET

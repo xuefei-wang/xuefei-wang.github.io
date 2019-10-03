@@ -1,3 +1,8 @@
+---
+layout: post
+title: simulation neurons
+---
+
 # Simulate Neuron Networks
 
 > python package: PyNN
