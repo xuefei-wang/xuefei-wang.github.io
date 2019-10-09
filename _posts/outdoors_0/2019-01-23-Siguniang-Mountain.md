@@ -3,10 +3,10 @@ layout: post
 title: Siguniang Mountain (四姑娘山) - Ice climbing
 ---
 
-![](/assets/photos/siguniang-mountain-1.jpg)
-![](/assets/photos/siguniang-mountain-2.jpg)
-![](/assets/photos/siguniang-mountain-3.jpg)
-![](/assets/photos/siguniang-mountain-4.jpg)
-![](/assets/photos/siguniang-mountain-5.jpg)
-![](/assets/photos/siguniang-mountain-6.jpg)
-![](/assets/photos/siguniang-mountain-7.jpg)
+<img src="{{ "/" | relative_url }}/assets/photos/siguniang-mountain-1.JPG">
+<img src="{{ "/" | relative_url }}/assets/photos/siguniang-mountain-2.JPG">
+<img src="{{ "/" | relative_url }}/assets/photos/siguniang-mountain-3.JPG">
+<img src="{{ "/" | relative_url }}/assets/photos/siguniang-mountain-4.JPG">
+<img src="{{ "/" | relative_url }}/assets/photos/siguniang-mountain-5.JPG">
+<img src="{{ "/" | relative_url }}/assets/photos/siguniang-mountain-6.JPG">
+<img src="{{ "/" | relative_url }}/assets/photos/siguniang-mountain-7.JPG">

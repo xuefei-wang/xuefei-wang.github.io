@@ -3,5 +3,5 @@ layout: post
 title: Shangri-la (香格里拉)
 ---
 
-![](/assets/photos/Shangri-la-1.jpg)
-![](/assets/photos/Shangri-la-2.jpg)
+<img src="{{ "/" | relative_url }}/assets/photos/Shangri-la-1.JPG">
+<img src="{{ "/" | relative_url }}/assets/photos/Shangri-la-2.JPG">
