@@ -1,6 +1,6 @@
 ---
 layout: post
-title: spike sorting
+title: spike sorting procedure
 ---
 
 Brief notes about spike sorting procedure
@@ -50,13 +50,13 @@ This is actually dimensionality reduction.
 
 ### Clustering
 
-K-Means
+- K-Means
 
-Fuzzy C-Means
+- Fuzzy C-Means
 
-Hierarchical
+- Hierarchical
 
-SPC
+- SPC
 
 
 
@@ -81,8 +81,8 @@ Lratio & Isolation Distance
 
 ### Ground Truth Dataset to play with
 
-Harris 2000
+- Harris 2000
 
-Neto 2016 MEA data
+- Neto 2016 MEA data
 
-Brain Allan Boyden MEA data
+- Brain Allan Boyden MEA data

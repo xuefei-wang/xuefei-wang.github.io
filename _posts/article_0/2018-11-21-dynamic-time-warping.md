@@ -112,7 +112,7 @@ Two ways:
 
 
 
-> 如何把DTW的dissimilarity转变为similarity？
+> How to turn dissimilarity into similarity？
 >
 > https://cs.stackexchange.com/questions/53250/normalized-measure-from-dynamic-time-warping
 
@@ -124,7 +124,7 @@ Two ways:
 
 
 
-## Notes for EEG
+## Notes
 
 - open end
 
@@ -141,30 +141,12 @@ Two ways:
 
     >  Multi-Dimensional Dynamic Time Warping for Gesture Recognition
 
-​	search for the optimal w????????
+
 
 - noise-robust
 
-  simply using a Gaussian smooth(check scipy )
+  simply using a Gaussian smooth(check scipy)
 
   >  https://docs.scipy.org/doc/scipy-0.15.1/reference/generated/scipy.ndimage.filters.gaussian_filter1d.html
 
 
-
-singular velocity is not  a good idea
-
-
-
-try: paa + dtw
-
-​	maybe we can use this to denoise single trial epochs
-
-	> Scale up ...
-
-the method is called PDTW
-
-
-
-
-
-LCSS: longest common subsequence, allow for unmatched outliers

@@ -43,3 +43,6 @@ node_modules
 
 # jekyll cache
 .jekyll-cache
+
+# temp not showing the posts
+_posts/articles_0

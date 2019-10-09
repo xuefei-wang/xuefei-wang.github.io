@@ -2,6 +2,7 @@
 layout: page
 title: Outdoors
 ---
+A photo gallary of my hiking/climbing trips.
 
 <div class="posts">
   {% for post in site.posts %}

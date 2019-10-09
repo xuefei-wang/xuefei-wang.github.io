@@ -4,23 +4,12 @@ title: Techniques in neuroscience
 ---
 
 
-# Techniques in Neuroscience
 
 ## Golgi 染色
-
-100多年前
-
-形态学研究
+Morphology
 
 
-
-## EM-电镜
-
-穿透电镜
-
-扫描电镜
-
-结构 e.g. 囊泡
+## EM
 
 
 
@@ -39,37 +28,18 @@ high resolution
 ## Molecular Cloning, PCR
 
 
-
-
-
 ## Gene Knockout
-
-
-
-
-
 
 
 ## MRI 电磁学
 
 
-
-
-
-
-
 ## Genomics
-
-
-
-
-
 
 
 ## CRISP/Cas9
 
 clustered regularly-interspaced short palindromic repeats
-
 
 
 
@@ -169,8 +139,6 @@ Lawrence B. Cohen
 
 
 
-
-
 ## 在体电生理记录
 
 16通道/64通道
@@ -178,9 +146,6 @@ Lawrence B. Cohen
 单神经元放电信号spike，场电位field potential，外部数字信号？？
 
 offline sorter
-
-
-
 
 
 
@@ -203,13 +168,6 @@ WHY 'VECTOR':Viruses have evolved to develop specialized mechanisms which transp
 ```
 
 
-
-
-
-
-
-
-
 ## In situ hybridization
 
 目的是看gene在哪里表达了（DNA-->RNA）
@@ -217,7 +175,6 @@ WHY 'VECTOR':Viruses have evolved to develop specialized mechanisms which transp
 probes是单链RNA，在实验室做出来，可以跟上面的RNA配对。
 
 在probes上做上标记，然后看probes跟哪些地方的RNA结合了，就可以知道这个gene表达在什么地方了
-
 
 
 
@@ -239,9 +196,6 @@ chemistry => usually use proteins/chromogenic-molecules(enzyme reaction)/flouren
 可以是monocolonal 或者 polycolonal，一个抗体结合一个或多个抗原
 
 甚至可以有secodary antibody，把第一个antinbody当做antigen，第二个带颜色
-
-
-
 
 
 # optogenetics specifity

@@ -39,6 +39,8 @@ TODO: read about call_back functions later
 
 > callbacks is an optional list of callables, each of which should accept the current time as an argument, and return the next time it wishes to be called.
 
+Notes: Remember to `reset` when using jupyter notebook, `setup`  should be set before build the network.... a good lesson TAT
+
 
 
 ### Break a run into several steps
@@ -67,7 +69,7 @@ The time is 300
 300.0
 ```
 
-## Obejcts
+## Objects
 
 ### Neurons
 
@@ -359,7 +361,7 @@ record(['v', 'spikes'], population, filename="output_data.pkl")
 get_data()
 ```
 
-
+Note: Do not use `WeightRecorder` from the official examples, when current injection & spike recording is needed
 
 
 

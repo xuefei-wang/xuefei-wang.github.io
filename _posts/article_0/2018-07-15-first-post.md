@@ -1,6 +1,6 @@
 ---
 layout: post
-title: What's Jekyll?
+title: First start this blog
 ---
 
 Hope that all things will come together.
