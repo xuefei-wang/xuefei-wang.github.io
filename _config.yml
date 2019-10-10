@@ -21,3 +21,5 @@ author:
 
 paginate:         5
 
+
+excerpt_separator: "<!--more-->"
