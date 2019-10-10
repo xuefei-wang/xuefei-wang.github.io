@@ -7,9 +7,9 @@ permalink:        pretty
 relative_permalinks: false
 
 # Setup
-title:            Xuefei's Blog
+title:            Xuefei Wang
 tagline:          'personal website'
-description:      'Neuroscience / Coding / Climbing  @ Computer Science Major, Fudan University'
+description:      'Neuroscience / Coding / Climbing'
 url:              http://xuefe-wang.github.io
 baseurl:          /
 

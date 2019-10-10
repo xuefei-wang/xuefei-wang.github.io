@@ -1,11 +1,14 @@
 <div class="sidebar">
   <div class="container sidebar-sticky">
+    
     <div class="sidebar-about">
+        
       <h1>
         <a href="{{ "/" | relative_url }}">
           {{ site.title }}
         </a>
       </h1>
+      <img src="/assets/profile.jpg">
       <p class="lead">{{ site.description }}</p>
     </div>
 
@@ -25,7 +28,6 @@
           {% endif %}
         {% endif %}
       {% endfor %}
-
     <!-- <ul class="social-links">
         {% if site.author.github %}
             <a href="https://github.com/{{ site.author.github }}" class="social-links__entry" target="_blank">
@@ -45,12 +47,10 @@
             </a>
         {% endif %}
     </ul> -->
-
-
             <a class="sidebar-nav-item" href="/assets/resume.pdf">Resume</a>
       <!-- <a class="sidebar-nav-item" href="{{ site.github.repo }}">GitHub project</a> -->
     </nav>
 
-    <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p>
+    <!-- <p>&copy; {{ site.time | date: '%Y' }}. All rights reserved.</p> -->
   </div>
 </div>
