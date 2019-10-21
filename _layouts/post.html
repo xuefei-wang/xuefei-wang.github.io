@@ -4,9 +4,9 @@ layout: default
 
 <div class="post">
   <h2 class="post-title">{{ page.title }}</h2>
-  <h2>
+  <h1>
   {% if page.subtitle %}<small>{{ page.subtitle }}</small>{% endif %}
-  </h2>
+  </h1>
   <span class="post-date">{{ page.date | date_to_string }}</span>
   {{ content }}
 </div>
