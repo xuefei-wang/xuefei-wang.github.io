@@ -1,0 +1,28 @@
+# IDE
+.idea
+.vscode
+
+# Claude Code
+.claude/
+.mcp.json
+
+# Shell / personal dotfiles
+.bash_profile
+.bashrc
+.gitconfig
+.profile
+.ripgreprc
+.zprofile
+.zshrc
+
+# Sandbox artifacts
+HEAD
+config
+hooks
+objects
+refs
+.gitmodules
+
+# OS
+.DS_Store
+Thumbs.db
