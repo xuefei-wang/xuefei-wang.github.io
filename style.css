@@ -63,6 +63,7 @@
 html {
     scroll-behavior: smooth;
     scroll-padding-top: calc(var(--nav-height) + 2rem);
+    overflow-x: hidden;
 }
 
 body {
@@ -259,6 +260,7 @@ h2::after {
     padding-top: 4.5rem;
     padding-bottom: 1rem;
     position: relative;
+    overflow: hidden;
 }
 
 /* Interactive canvas background */
