@@ -637,12 +637,12 @@ h1 {
 /* ---------- Quotes ---------- */
 
 .quotes-list {
-    columns: 2;
-    column-gap: 2.5rem;
+    columns: 1;
 }
 
 .quote-item {
     break-inside: avoid;
+    margin-bottom: 1.5rem;
 }
 
 .quote-item blockquote {
@@ -670,10 +670,10 @@ h1 {
 .quote-translation {
     display: block;
     font-family: var(--font-serif);
-    font-size: 0.82rem;
+    font-size: 0.93rem;
     font-style: italic;
-    line-height: 1.55;
-    color: var(--color-text-secondary);
+    line-height: 1.65;
+    color: var(--color-text);
     margin-top: 0.25rem;
 }
 
