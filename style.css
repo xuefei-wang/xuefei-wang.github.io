@@ -595,6 +595,127 @@ h1 {
     color: var(--color-accent);
 }
 
+/* ---------- Beyond Subsections ---------- */
+
+.beyond-subsection {
+    margin-top: 2rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--color-border-light);
+}
+
+.subsection-heading {
+    font-family: var(--font-serif);
+    font-size: 1.15rem;
+    font-weight: 500;
+    color: var(--color-text);
+    margin-bottom: 0.25rem;
+    letter-spacing: -0.01em;
+}
+
+.subsection-intro {
+    font-family: var(--font-serif);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 1rem;
+    font-style: italic;
+}
+
+/* ---------- Beyond Lists (shared) ---------- */
+
+.quotes-list,
+.book-list {
+    list-style: none;
+}
+
+.quote-item,
+.book-item {
+    padding: 0.5rem 0 0.5rem 1rem;
+    border-left: 2px solid var(--color-border-light);
+    margin-bottom: 0.25rem;
+}
+
+/* ---------- Quotes ---------- */
+
+.quotes-list {
+    columns: 2;
+    column-gap: 2.5rem;
+}
+
+.quote-item {
+    break-inside: avoid;
+}
+
+.quote-item blockquote {
+    font-family: var(--font-serif);
+    font-size: 0.93rem;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--color-text);
+}
+
+.quote-item cite {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 0.78rem;
+    font-style: normal;
+    color: var(--color-text-secondary);
+    margin-top: 0.1rem;
+}
+
+.quote-item blockquote[lang="zh"] {
+    font-family: 'Noto Serif SC', serif;
+    font-style: normal;
+}
+
+.quote-translation {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 0.82rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: var(--color-text-secondary);
+    margin-top: 0.25rem;
+}
+
+/* ---------- Books ---------- */
+
+.book-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.25rem 2.5rem;
+}
+
+.book-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-title {
+    display: block;
+    font-family: var(--font-serif);
+    font-size: 0.93rem;
+    font-weight: 500;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--color-text);
+}
+
+.book-title[lang="zh"] {
+    font-family: 'Noto Serif SC', serif;
+    font-style: normal;
+}
+
+.book-author {
+    display: block;
+    font-family: var(--font-sans);
+    font-size: 0.78rem;
+    color: var(--color-text-secondary);
+}
+
+.book-author[lang="zh"] {
+    font-family: 'Noto Serif SC', serif;
+}
+
 /* ---------- Footer ---------- */
 
 .site-footer { padding: 2.5rem 1.5rem; text-align: center; }
@@ -639,6 +760,9 @@ h1 {
     .pub-item.first-author { margin-left: 0; }
 
     #snowflake-canvas { left: -50px; right: -50px; width: calc(100% + 100px); }
+
+    .quotes-list { columns: 1; }
+    .book-list { grid-template-columns: 1fr; }
 }
 
 /* ---------- Print ---------- */
