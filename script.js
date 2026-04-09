@@ -28,9 +28,11 @@ if (navToggle) {
 
 // ---------- Nav border on scroll ----------
 const header = document.querySelector('.site-header');
-window.addEventListener('scroll', () => {
-    header.classList.toggle('scrolled', window.scrollY > 10);
-}, { passive: true });
+if (header) {
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+}
 
 // ---------- Toggle buttons ----------
 document.querySelectorAll('.toggle-btn').forEach(btn => {
@@ -111,6 +113,10 @@ window.addEventListener('DOMContentLoaded', () => {
         mouseRadius: 120,
         mouseForce: 0.015,
     };
+
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) CONFIG.count = 0;
+    else if (window.innerWidth < 768) CONFIG.count = 10;
 
     let flakes = [];
     let mouse = { x: -9999, y: -9999 };
@@ -258,10 +264,20 @@ window.addEventListener('DOMContentLoaded', () => {
         }
     }
 
+    let rafId;
     function animate() {
         update();
         draw();
-        requestAnimationFrame(animate);
+        rafId = requestAnimationFrame(animate);
+    }
+
+    function stopAnimation() {
+        cancelAnimationFrame(rafId);
+        rafId = null;
+    }
+
+    function startAnimation() {
+        if (!rafId) rafId = requestAnimationFrame(animate);
     }
 
     function handleMouse(e) {
@@ -276,13 +292,28 @@ window.addEventListener('DOMContentLoaded', () => {
         animate();
         setTimeout(() => canvas.classList.add('loaded'), 300);
 
+        let resizeTimer;
         window.addEventListener('resize', () => {
-            resize();
-            for (const f of flakes) {
-                if (f.x > width) f.x = Math.random() * width;
-                if (f.y > height) f.y = Math.random() * height;
-            }
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                resize();
+                for (const f of flakes) {
+                    if (f.x > width) f.x = Math.random() * width;
+                    if (f.y > height) f.y = Math.random() * height;
+                }
+            }, 150);
         });
+
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) stopAnimation();
+            else startAnimation();
+        });
+
+        const heroObserver = new IntersectionObserver(([entry]) => {
+            if (entry.isIntersecting) startAnimation();
+            else stopAnimation();
+        }, { threshold: 0 });
+        heroObserver.observe(canvas.parentElement);
 
         canvas.parentElement.addEventListener('mousemove', handleMouse, { passive: true });
         canvas.parentElement.addEventListener('mouseleave', () => {

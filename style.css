@@ -51,8 +51,10 @@
 [data-theme="dark"] .venue-tag.journal { background: #1a3325; color: #4ade80; }
 [data-theme="dark"] .venue-tag.conference { background: #0f2a35; color: #38bdf8; }
 [data-theme="dark"] .venue-tag.preprint { background: #2a2218; color: #d4a574; }
+[data-theme="dark"] .pub-links a { border-color: #444; }
 
 [data-theme="dark"] ::selection {
+    background: rgba(11, 180, 204, 0.3);
     color: #fff;
 }
 
@@ -91,6 +93,27 @@ strong { font-weight: 600; }
 ::selection {
     background: var(--color-accent-light);
     color: var(--color-text);
+}
+
+/* ---------- Skip Link ---------- */
+
+.skip-link {
+    position: absolute;
+    top: -100%;
+    left: 1rem;
+    z-index: 200;
+    padding: 0.5rem 1rem;
+    background: var(--color-accent);
+    color: #fff;
+    border-radius: 0 0 6px 6px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: top 0.2s ease;
+}
+.skip-link:focus {
+    top: 0;
+    color: #fff;
 }
 
 /* ---------- Navigation ---------- */
@@ -342,7 +365,7 @@ h1 {
     font-size: 2.8rem;
     font-weight: 600;
     letter-spacing: -0.035em;
-    line-height: 1.1;
+    line-height: 1.2;
     margin-bottom: 0.35rem;
     background: linear-gradient(135deg, #1a3a4a 0%, #0bb4cc 100%);
     -webkit-background-clip: text;
@@ -808,7 +831,8 @@ h1 {
         --color-border-light: #edebe6;
     }
     .site-header, .toggle-btn, .nav-toggle, .theme-toggle, #snowflake-canvas { display: none !important; }
-    .news-hidden, .pub-hidden { display: flex !important; }
+    .news-hidden { display: flex !important; }
+    .pub-hidden { display: block !important; }
     .animate-in { opacity: 1 !important; transform: none !important; }
     body { font-size: 12px; background: #fff; color: #1a1a1c; }
     h1 { -webkit-text-fill-color: #1a1a1c; background: none; }
