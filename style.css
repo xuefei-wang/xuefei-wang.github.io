@@ -15,7 +15,7 @@
     --color-border: #e4e1db;
     --color-border-light: #edebe6;
 
-    --font-serif: 'EB Garamond', Georgia, 'Times New Roman', serif;
+    --font-serif: 'Source Serif 4', Georgia, 'Times New Roman', serif;
     --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
     --max-width: 720px;
@@ -69,6 +69,7 @@ html {
 body {
     font-family: var(--font-sans);
     font-size: 16px;
+    font-weight: 420;
     line-height: 1.75;
     color: var(--color-text);
     background: var(--color-bg);
@@ -133,7 +134,7 @@ strong { font-weight: 600; }
 
 .nav-links a {
     font-size: 0.82rem;
-    font-weight: 450;
+    font-weight: 400;
     color: var(--color-text-secondary);
     letter-spacing: 0.02em;
     position: relative;
@@ -439,7 +440,7 @@ h1 {
 }
 .news-text a:hover { text-decoration-color: var(--color-accent); }
 
-.news-hidden { display: none; }
+.news-list li.news-hidden { display: none; }
 
 /* ---------- Publications ---------- */
 
@@ -462,7 +463,7 @@ h1 {
 .pub-item.first-author + .pub-item { border-top: none; }
 
 .pub-title {
-    font-weight: 500;
+    font-weight: 400;
     font-size: 0.93rem;
     line-height: 1.55;
     margin-bottom: 0.2rem;
@@ -595,6 +596,30 @@ h1 {
     color: var(--color-accent);
 }
 
+/* ---------- Effy ---------- */
+
+.beyond-with-video {
+    display: flex;
+    align-items: flex-start;
+    gap: 2rem;
+}
+
+.beyond-text-col {
+    flex: 1;
+    min-width: 0;
+}
+
+.beyond-text-col .beyond-text + .beyond-text {
+    margin-top: 0.6rem;
+}
+
+.effy-video {
+    flex-shrink: 0;
+    width: 240px;
+    border-radius: 10px;
+    display: block;
+}
+
 /* ---------- Beyond Subsections ---------- */
 
 .beyond-subsection {
@@ -665,6 +690,10 @@ h1 {
 .quote-item blockquote[lang="zh"] {
     font-family: 'Noto Serif SC', serif;
     font-style: normal;
+}
+
+.quote-item cite[lang="zh"] {
+    font-family: 'Noto Serif SC', serif;
 }
 
 .quote-translation {
@@ -758,6 +787,8 @@ h1 {
     .teaching-list li { flex-direction: column; gap: 0.15rem; }
     .teaching-when { margin-left: 0; }
     .pub-item.first-author { margin-left: 0; }
+    .beyond-with-video { flex-direction: column; }
+    .effy-video { width: 100%; max-width: 320px; }
 
     #snowflake-canvas { left: -50px; right: -50px; width: calc(100% + 100px); }
 

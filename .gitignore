@@ -26,3 +26,6 @@ refs
 # OS
 .DS_Store
 Thumbs.db
+
+# Local previews (not deployed)
+previews/
