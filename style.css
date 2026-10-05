@@ -456,7 +456,8 @@ h1 {
 
 .news-date {
     flex-shrink: 0;
-    width: 80px;
+    width: 100px;
+    white-space: nowrap;
     color: var(--color-text-secondary);
     font-size: 0.82rem;
     font-weight: 500;
