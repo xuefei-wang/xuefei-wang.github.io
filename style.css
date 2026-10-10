@@ -51,7 +51,7 @@
 [data-theme="dark"] .venue-tag.journal { background: #1a3325; color: #4ade80; }
 [data-theme="dark"] .venue-tag.conference { background: #0f2a35; color: #38bdf8; }
 [data-theme="dark"] .venue-tag.preprint { background: #2a2218; color: #d4a574; }
-[data-theme="dark"] .venue-tag.award { box-shadow: 0 0 0 1px #fcd34d55, 0 2px 10px rgba(250, 204, 21, 0.35); }
+[data-theme="dark"] .venue-tag.award { box-shadow: 0 0 0 1px #fb718555, 0 2px 10px rgba(244, 63, 94, 0.4); }
 [data-theme="dark"] .pub-links a { border-color: #444; }
 
 [data-theme="dark"] ::selection {
@@ -533,19 +533,19 @@ h1 {
     font-weight: 700;
     padding: 2px 9px 2px 7px;
     border-radius: 999px;
-    color: #3d2a00;
-    background: linear-gradient(135deg, #fde68a 0%, #f59e0b 55%, #fbbf24 100%);
-    box-shadow: 0 0 0 1px #d9770655, 0 2px 8px rgba(245, 158, 11, 0.35);
+    color: #fff;
+    background: linear-gradient(135deg, #be123c 0%, #e11d48 50%, #fb7185 100%);
+    box-shadow: 0 0 0 1px #be123c55, 0 2px 8px rgba(225, 29, 72, 0.35);
 }
 a.venue-tag.award { text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-a.venue-tag.award:hover { color: #3d2a00; transform: translateY(-1px); box-shadow: 0 0 0 1px #d97706aa, 0 4px 14px rgba(245, 158, 11, 0.5); }
+a.venue-tag.award:hover { color: #fff; transform: translateY(-1px); box-shadow: 0 0 0 1px #be123caa, 0 4px 14px rgba(225, 29, 72, 0.5); }
 .venue-tag.award::before { content: "\1F3C6\FE0E"; margin-right: 0.3em; }
 .venue-tag.award::after {
     content: "";
     position: absolute;
     top: 0; left: -60%;
     width: 40%; height: 100%;
-    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.65), transparent);
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
     animation: award-shine 3.5s ease-in-out infinite;
 }
 @keyframes award-shine {
@@ -895,7 +895,7 @@ a.venue-tag.award:hover { color: #3d2a00; transform: translateY(-1px); box-shado
     .venue-tag.journal { background: #e6f4ea !important; color: #1e7e34 !important; }
     .venue-tag.conference { background: #dceef5 !important; color: #067a94 !important; }
     .venue-tag.preprint { background: #f0e6db !important; color: #9a6030 !important; }
-    .venue-tag.award { background: #fde68a !important; color: #3d2a00 !important; box-shadow: none !important; }
+    .venue-tag.award { background: #ffe4e6 !important; color: #9f1239 !important; box-shadow: none !important; }
     .venue-tag.award::after { display: none !important; }
 }
 
