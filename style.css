@@ -51,6 +51,7 @@
 [data-theme="dark"] .venue-tag.journal { background: #1a3325; color: #4ade80; }
 [data-theme="dark"] .venue-tag.conference { background: #0f2a35; color: #38bdf8; }
 [data-theme="dark"] .venue-tag.preprint { background: #2a2218; color: #d4a574; }
+[data-theme="dark"] .venue-tag.award { background: #33290f; color: #facc15; }
 [data-theme="dark"] .pub-links a { border-color: #444; }
 
 [data-theme="dark"] ::selection {
@@ -525,6 +526,7 @@ h1 {
 .venue-tag.journal { background: #e6f4ea; color: #1e7e34; }
 .venue-tag.conference { background: #dceef5; color: #067a94; }
 .venue-tag.preprint { background: #f0e6db; color: #9a6030; }
+.venue-tag.award { background: #fdf3d1; color: #8a6100; }
 
 .pub-links { display: flex; gap: 0.45rem; flex-wrap: wrap; }
 .pub-links a {
@@ -865,6 +867,7 @@ h1 {
     .venue-tag.journal { background: #e6f4ea !important; color: #1e7e34 !important; }
     .venue-tag.conference { background: #dceef5 !important; color: #067a94 !important; }
     .venue-tag.preprint { background: #f0e6db !important; color: #9a6030 !important; }
+    .venue-tag.award { background: #fdf3d1 !important; color: #8a6100 !important; }
 }
 
 /* Publication group headings */
