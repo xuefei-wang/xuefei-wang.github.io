@@ -51,7 +51,7 @@
 [data-theme="dark"] .venue-tag.journal { background: #1a3325; color: #4ade80; }
 [data-theme="dark"] .venue-tag.conference { background: #0f2a35; color: #38bdf8; }
 [data-theme="dark"] .venue-tag.preprint { background: #2a2218; color: #d4a574; }
-[data-theme="dark"] .venue-tag.award { box-shadow: 0 0 0 1px #fb718555, 0 2px 10px rgba(244, 63, 94, 0.4); }
+[data-theme="dark"] .venue-tag.award { box-shadow: 0 0 0 1px #fb718555, 0 1px 5px rgba(244, 63, 94, 0.2); }
 [data-theme="dark"] .pub-links a { border-color: #444; }
 
 [data-theme="dark"] ::selection {
@@ -535,7 +535,7 @@ h1 {
     border-radius: 999px;
     color: #fff;
     background: linear-gradient(135deg, #be123c 0%, #e11d48 50%, #fb7185 100%);
-    box-shadow: 0 0 0 1px #be123c55, 0 2px 8px rgba(225, 29, 72, 0.35);
+    box-shadow: 0 0 0 1px #be123c55, 0 1px 4px rgba(225, 29, 72, 0.2);
 }
 a.venue-tag.award { text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease; }
 a.venue-tag.award:hover { color: #fff; transform: translateY(-1px); box-shadow: 0 0 0 1px #be123caa, 0 4px 14px rgba(225, 29, 72, 0.5); }
@@ -545,11 +545,11 @@ a.venue-tag.award:hover { color: #fff; transform: translateY(-1px); box-shadow: 
     position: absolute;
     top: 0; left: -60%;
     width: 40%; height: 100%;
-    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.45), transparent);
-    animation: award-shine 3.5s ease-in-out infinite;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+    animation: award-shine 9s ease-in-out infinite;
 }
 @keyframes award-shine {
-    0%, 60% { left: -60%; }
+    0%, 85% { left: -60%; }
     100% { left: 130%; }
 }
 @media (prefers-reduced-motion: reduce) {
