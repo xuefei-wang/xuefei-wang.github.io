@@ -537,6 +537,8 @@ h1 {
     background: linear-gradient(135deg, #fde68a 0%, #f59e0b 55%, #fbbf24 100%);
     box-shadow: 0 0 0 1px #d9770655, 0 2px 8px rgba(245, 158, 11, 0.35);
 }
+a.venue-tag.award { text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+a.venue-tag.award:hover { color: #3d2a00; transform: translateY(-1px); box-shadow: 0 0 0 1px #d97706aa, 0 4px 14px rgba(245, 158, 11, 0.5); }
 .venue-tag.award::before { content: "\1F3C6\FE0E"; margin-right: 0.3em; }
 .venue-tag.award::after {
     content: "";
