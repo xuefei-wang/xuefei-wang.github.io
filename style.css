@@ -51,7 +51,6 @@
 [data-theme="dark"] .venue-tag.journal { background: #1a3325; color: #4ade80; }
 [data-theme="dark"] .venue-tag.conference { background: #0f2a35; color: #38bdf8; }
 [data-theme="dark"] .venue-tag.preprint { background: #2a2218; color: #d4a574; }
-[data-theme="dark"] .venue-tag.award { box-shadow: 0 0 0 1px #fb718555, 0 1px 5px rgba(244, 63, 94, 0.2); }
 [data-theme="dark"] .pub-links a { border-color: #444; }
 
 [data-theme="dark"] ::selection {
@@ -527,34 +526,17 @@ h1 {
 .venue-tag.conference { background: #dceef5; color: #067a94; }
 .venue-tag.preprint { background: #f0e6db; color: #9a6030; }
 .venue-tag.award {
-    position: relative;
-    overflow: hidden;
     font-size: 0.7rem;
     font-weight: 700;
     padding: 2px 9px 2px 7px;
     border-radius: 999px;
     color: #fff;
-    background: linear-gradient(135deg, #be123c 0%, #e11d48 50%, #fb7185 100%);
-    box-shadow: 0 0 0 1px #be123c55, 0 1px 4px rgba(225, 29, 72, 0.2);
+    background: linear-gradient(135deg, var(--color-accent-warm) 0%, var(--color-accent) 50%, var(--color-accent-cool) 100%);
+    box-shadow: 0 1px 4px rgba(6, 138, 161, 0.25);
 }
 a.venue-tag.award { text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease; }
-a.venue-tag.award:hover { color: #fff; transform: translateY(-1px); box-shadow: 0 0 0 1px #be123caa, 0 4px 14px rgba(225, 29, 72, 0.5); }
+a.venue-tag.award:hover { color: #fff; transform: translateY(-1px); box-shadow: 0 3px 10px rgba(6, 138, 161, 0.4); }
 .venue-tag.award::before { content: "\1F3C6\FE0E"; margin-right: 0.3em; }
-.venue-tag.award::after {
-    content: "";
-    position: absolute;
-    top: 0; left: -60%;
-    width: 40%; height: 100%;
-    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.22), transparent);
-    animation: award-shine 9s ease-in-out infinite;
-}
-@keyframes award-shine {
-    0%, 85% { left: -60%; }
-    100% { left: 130%; }
-}
-@media (prefers-reduced-motion: reduce) {
-    .venue-tag.award::after { animation: none; display: none; }
-}
 
 .pub-links { display: flex; gap: 0.45rem; flex-wrap: wrap; }
 .pub-links a {
@@ -895,8 +877,7 @@ a.venue-tag.award:hover { color: #fff; transform: translateY(-1px); box-shadow: 
     .venue-tag.journal { background: #e6f4ea !important; color: #1e7e34 !important; }
     .venue-tag.conference { background: #dceef5 !important; color: #067a94 !important; }
     .venue-tag.preprint { background: #f0e6db !important; color: #9a6030 !important; }
-    .venue-tag.award { background: #ffe4e6 !important; color: #9f1239 !important; box-shadow: none !important; }
-    .venue-tag.award::after { display: none !important; }
+    .venue-tag.award { background: #e0f4f7 !important; color: #046a7d !important; box-shadow: none !important; }
 }
 
 /* Publication group headings */
